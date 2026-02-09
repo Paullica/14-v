@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💘 Pentru tine</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(180deg, #ff5f9e, #ff85b3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    width: 360px;
+    height: 640px;
+    background: #fff;
+    border-radius: 25px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(0,0,0,0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h1 {
+    color: #d6336c;
+    min-height: 80px;
+}
+
+button {
+    font-size: 18px;
+    padding: 12px 25px;
+    margin: 10px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+#yes {
+    background: #4CAF50;
+    color: white;
+}
+
+#no {
+    background: #f44336;
+    color: white;
+}
+
+video {
+    width: 100%;
+    border-radius: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1 id="text"></h1>
+
+    <div id="buttons">
+        <button id="yes" onclick="sayYes()">DA 💖</button>
+        <button id="no" onclick="sayNo()">NU 😢</button>
+    </div>
+
+    <div id="videoBox" style="display:none;">
+        <h1>Știam că o să spui DA ❤️</h1>
+        <video controls autoplay>
+            <source src="VIDEO-TAU-AICI.mp4" type="video/mp4">
+        </video>
+    </div>
+</div>
+
+<script>
+/* 🔴 PERSONALIZEAZĂ AICI */
+const name = "IUBITA MEA";
+
+/* TEXTE */
+const messages = [
+    `Hei ${name}...`,
+    "Am o întrebare foarte importantă 🥺",
+    "Vrei să fii Valentina mea? 💘"
+];
+
+const noQuestions = [
+    "Ești sigură? 😢",
+    "Chiar nu vrei? 🥺",
+    "Gândește-te puțin 😭",
+    "Ultima șansă 😈",
+    "Ok… dar DA rămâne 😏"
+];
+
+let msgIndex = 0;
+let noIndex = 0;
+
+/* ANIMAȚIE TEXT */
+function typeText(text, i = 0) {
+    if (i === 0) document.getElementById("text").innerHTML = "";
+    if (i < text.length) {
+        document.getElementById("text").innerHTML += text.charAt(i);
+        setTimeout(() => typeText(text, i + 1), 50);
+    }
+}
+
+/* START */
+typeText(messages[msgIndex]);
+
+/* BUTON NU */
+function sayNo() {
+    if (noIndex < noQuestions.length) {
+        typeText(noQuestions[noIndex]);
+        noIndex++;
+    } else {
+        document.getElementById("buttons").innerHTML =
+            `<button id="yes" onclick="sayYes()">DA 💖</button>`;
+    }
+}
+
+/* BUTON DA */
+function sayYes() {
+    document.getElementById("buttons").style.display = "none";
+    document.getElementById("text").style.display = "none";
+    document.getElementById("videoBox").style.display = "block";
+}
+</script>
+
+</body>
+</html>
