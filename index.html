@@ -62,21 +62,23 @@ video {
 
 <body>
 
-<div class="container">
-    <h1 id="text"></h1>
+<div class="container" id="main">
+  <h1 id="text"></h1>
 
-    <div id="buttons">
-        <button id="yes" onclick="sayYes()">DA 💖</button>
-        <button id="no" onclick="sayNo()">NU 😢</button>
-    </div>
-
-    <div id="videoBox" style="display:none;">
-        <h1>Știam că o să spui DA ❤️</h1>
-        <video controls autoplay muted playsinline>
-            <source src="./merge.mp4" type="video/mp4"">
-        </video>
-    </div>
+  <div id="buttons">
+    <button onclick="sayYes()">DA ❤️</button>
+    <button onclick="sayNo()">NU 😢</button>
+  </div>
 </div>
+
+<div id="videoBox" style="display:none; text-align:center;">
+  <h1>Știam că o să spui DA ❤️</h1>
+
+  <video controls autoplay muted playsinline style="max-width:90%; border-radius:12px;">
+    <source src="./merge.mp4" type="video/mp4">
+  </video>
+</div>
+
 
 <script>
 /* PERSONALIZARE */
@@ -145,6 +147,7 @@ function sayYes() {
 
 </body>
 </html>
+
 
 
 
