@@ -79,10 +79,10 @@ video {
 </div>
 
 <script>
-/* 🔴 PERSONALIZEAZĂ AICI */
+/* PERSONALIZARE */
 const name = "IUBITA MEA";
 
-/* TEXTE */
+/* MESAJE */
 const messages = [
     `Hei ${name}...`,
     "Am o întrebare foarte importantă 🥺",
@@ -100,17 +100,28 @@ const noQuestions = [
 let msgIndex = 0;
 let noIndex = 0;
 
-/* ANIMAȚIE TEXT */
-function typeText(text, i = 0) {
+/* TYPEWRITER */
+function typeText(text, callback, i = 0) {
     if (i === 0) document.getElementById("text").innerHTML = "";
     if (i < text.length) {
         document.getElementById("text").innerHTML += text.charAt(i);
-        setTimeout(() => typeText(text, i + 1), 50);
+        setTimeout(() => typeText(text, callback, i + 1), 50);
+    } else {
+        if (callback) setTimeout(callback, 1200);
     }
 }
 
-/* START */
-typeText(messages[msgIndex]);
+/* PORNIRE SECVENȚĂ */
+function startMessages() {
+    if (msgIndex < messages.length) {
+        typeText(messages[msgIndex], () => {
+            msgIndex++;
+            startMessages();
+        });
+    }
+}
+
+startMessages();
 
 /* BUTON NU */
 function sayNo() {
@@ -131,5 +142,7 @@ function sayYes() {
 }
 </script>
 
+
 </body>
 </html>
+
